@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Elite - TechStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🛒 DEMO STORE - No real transactions will be processed
+    </div>
+
+    <!-- Watermark -->
+    <div class="watermark">Demo by <a href="https://niyithewebdeveloper.vercel.app" target="_blank">Niyi the Web Developer</a></div>
+
+    <nav class="navbar">
+        <div class="logo">TechStore</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <span>🔍</span>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span class="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div class="promo-banner">
+         Free Shipping on Orders Over $50 | 🔄 30-Day Return Policy
+    </div>
+
+    <!-- Product Detail Page -->
+    <div class="product-detail">
+        <div class="product-gallery">
+            <div class="thumbnail-container">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Laptop Elite Front" class="thumbnail active" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Laptop Elite Keyboard" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Laptop Elite Side" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Laptop Elite Display" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Laptop Elite Ports" class="thumbnail" onclick="changeImage(this.src)">
+            </div>
+            <div class="main-image">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Laptop Elite" id="mainProductImage">
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1 class="product-title">Laptop Elite</h1>
+            <div class="product-rating">
+                ★★★★★ <span class="rating-count">(64 reviews)</span>
+            </div>
+            <div class="product-price">$1299</div>
+            <div class="stock-status">Only 3 left in stock</div>
+            
+            <p class="product-description">
+                The Laptop Elite redefines portable computing with its powerful performance and stunning design. 
+                Featuring a brilliant 15.6-inch 4K display, latest-generation processor, and dedicated graphics card 
+                for seamless multitasking and gaming. Perfect for professionals, creators, and power users.
+            </p>
+
+            <div class="variants">
+                <div class="variant-group">
+                    <div class="variant-title">Color</div>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant(this, 'color', 'Space Gray')">Space Gray</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'color', 'Silver')">Silver</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'color', 'Midnight Blue')">Midnight Blue</div>
+                    </div>
+                </div>
+                
+                <div class="variant-group">
+                    <div class="variant-title">RAM</div>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant(this, 'ram', '16GB')">16GB</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'ram', '32GB')">32GB</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'ram', '64GB')">64GB</div>
+                    </div>
+                </div>
+
+                <div class="variant-group">
+                    <div class="variant-title">Storage</div>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant(this, 'storage', '512GB SSD')">512GB SSD</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'storage', '1TB SSD')">1TB SSD</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'storage', '2TB SSD')">2TB SSD</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <div class="variant-title">Quantity</div>
+                <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                <div class="quantity-display" id="quantity">1</div>
+                <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+            </div>
+
+            <button class="add-to-cart" onclick="addToCart('Laptop Elite', 1299)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="product-reviews">
+        <h2 class="reviews-title">Customer Reviews</h2>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">Jennifer Wilson</div>
+                <div class="review-date">April 2, 2023</div>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <div class="review-text">
+                Absolutely love this laptop! The performance is incredible - handles my video editing workflow 
+                without any lag. The display is gorgeous and the battery life easily lasts through my workday.
+            </div>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">Robert Garcia</div>
+                <div class="review-date">March 22, 2023</div>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <div class="review-text">
+                Best laptop I've ever owned. The build quality is exceptional and the keyboard is a joy to type on. 
+                Perfect for both work and gaming. Worth every penny!
+            </div>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">Amanda Lee</div>
+                <div class="review-date">March 15, 2023</div>
+            </div>
+            <div class="review-rating">★★★★☆</div>
+            <div class="review-text">
+                Excellent laptop overall. The performance is top-notch and the design is sleek. 
+                My only minor complaint is that it gets a bit warm during intensive tasks, but that's expected with this much power.
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-modal" id="cartModal">
+        <h2>Shopping Cart</h2>
+        <div id="cartItems"></div>
+        <div id="cartTotal"></div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <a href="#">All Products</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">Best Sellers</a>
+                <a href="#">Deals & Promotions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns & Refunds</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <a href="#">Our Story</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 TechStore Demo. All rights reserved. This is a demonstration site.
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Product-specific variables
+        let selectedVariants = {
+            color: 'Space Gray',
+            ram: '16GB',
+            storage: '512GB SSD'
+        };
+    </script>
+</body>
+</html>

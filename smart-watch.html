@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Watch - TechStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🛒 DEMO STORE - No real transactions will be processed
+    </div>
+
+    <!-- Watermark -->
+    <div class="watermark">Demo by <a href="https://niyithewebdeveloper.vercel.app" target="_blank">Niyi the Web Developer</a></div>
+
+    <nav class="navbar">
+        <div class="logo">TechStore</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <span>🔍</span>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span class="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div class="promo-banner">
+         Free Shipping on Orders Over $50 | 🔄 30-Day Return Policy
+    </div>
+
+    <!-- Product Detail Page -->
+    <div class="product-detail">
+        <div class="product-gallery">
+            <div class="thumbnail-container">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smart Watch Front" class="thumbnail active" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smart Watch Side" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smart Watch Display" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smart Watch Band" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smart Watch Charging" class="thumbnail" onclick="changeImage(this.src)">
+            </div>
+            <div class="main-image">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smart Watch" id="mainProductImage">
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1 class="product-title">Smart Watch</h1>
+            <div class="product-rating">
+                ★★★★☆ <span class="rating-count">(42 reviews)</span>
+            </div>
+            <div class="product-price">
+                <span class="original-price">$349</span> $299
+            </div>
+            <div class="stock-status">In Stock (78 available)</div>
+            
+            <p class="product-description">
+                Stay connected and track your fitness with our advanced Smart Watch. Features include heart rate monitoring, 
+                sleep tracking, GPS, and smartphone notifications. With a sleek design and 7-day battery life, 
+                it's the perfect companion for your active lifestyle.
+            </p>
+
+            <div class="variants">
+                <div class="variant-group">
+                    <div class="variant-title">Color</div>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant(this, 'color', 'Midnight Black')">Midnight Black</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'color', 'Rose Gold')">Rose Gold</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'color', 'Silver')">Silver</div>
+                    </div>
+                </div>
+                
+                <div class="variant-group">
+                    <div class="variant-title">Band Size</div>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant(this, 'size', 'Small/Medium')">Small/Medium</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'size', 'Medium/Large')">Medium/Large</div>
+                    </div>
+                </div>
+
+                <div class="variant-group">
+                    <div class="variant-title">Band Type</div>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant(this, 'band', 'Silicone')">Silicone</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'band', 'Leather')">Leather</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'band', 'Metal')">Metal</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <div class="variant-title">Quantity</div>
+                <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                <div class="quantity-display" id="quantity">1</div>
+                <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+            </div>
+
+            <button class="add-to-cart" onclick="addToCart('Smart Watch', 299)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="product-reviews">
+        <h2 class="reviews-title">Customer Reviews</h2>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">Kevin Anderson</div>
+                <div class="review-date">April 5, 2023</div>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <div class="review-text">
+                Excellent smartwatch! The fitness tracking is accurate and the battery life is impressive. 
+                Love being able to see notifications without pulling out my phone. Great value at this price point.
+            </div>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">Sophia Martinez</div>
+                <div class="review-date">March 29, 2023</div>
+            </div>
+            <div class="review-rating">★★★★☆</div>
+            <div class="review-text">
+                Really enjoying this watch. The sleep tracking has been eye-opening and helped me improve my sleep habits. 
+                The interface is intuitive and setup was straightforward. Comfortable to wear all day and night.
+            </div>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">James Wilson</div>
+                <div class="review-date">March 20, 2023</div>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <div class="review-text">
+                Upgraded from an older model and the improvements are significant. Faster response, better display, 
+                and more accurate heart rate monitoring. The sale price makes it an incredible deal!
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-modal" id="cartModal">
+        <h2>Shopping Cart</h2>
+        <div id="cartItems"></div>
+        <div id="cartTotal"></div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <a href="#">All Products</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">Best Sellers</a>
+                <a href="#">Deals & Promotions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns & Refunds</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <a href="#">Our Story</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 TechStore Demo. All rights reserved. This is a demonstration site.
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Product-specific variables
+        let selectedVariants = {
+            color: 'Midnight Black',
+            size: 'Small/Medium',
+            band: 'Silicone'
+        };
+    </script>
+</body>
+</html>

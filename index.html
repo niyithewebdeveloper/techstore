@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - E-Commerce Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🛒 DEMO STORE - No real transactions will be processed
+    </div>
+
+    <!-- Watermark -->
+    <div class="watermark">Demo by <a href="https://niyithewebdeveloper.vercel.app" target="_blank">Niyi the Web Developer</a></div>
+
+    <nav class="navbar">
+        <div class="logo">TechStore</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <span>🔍</span>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span class="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div class="promo-banner">
+         Free Shipping on Orders Over $50 | 🔄 30-Day Return Policy
+    </div>
+
+    <!-- Search and Filters Section -->
+    <section class="search-filters">
+        <div class="filters-container">
+            <div class="search-section">
+                <div class="main-search">
+                    <input type="text" placeholder="Search products by name, brand, or category..." id="mainSearch">
+                    <span>🔍</span>
+                </div>
+                <button class="search-btn" onclick="performSearch()">Search</button>
+            </div>
+            
+            <div class="filters-section">
+                <div class="filter-dropdown">
+                    <button class="filter-btn">
+                        📁 Category
+                    </button>
+                    <div class="filter-dropdown-content">
+                        <div class="filter-options">
+                            <div class="filter-option">
+                                <input type="checkbox" id="cat-smartphones" onchange="updateFilters('category', 'Smartphones')">
+                                <label for="cat-smartphones">Smartphones</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="cat-laptops" onchange="updateFilters('category', 'Laptops')">
+                                <label for="cat-laptops">Laptops</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="cat-headphones" onchange="updateFilters('category', 'Headphones')">
+                                <label for="cat-headphones">Headphones</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="cat-wearables" onchange="updateFilters('category', 'Wearables')">
+                                <label for="cat-wearables">Wearables</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-dropdown">
+                    <button class="filter-btn">
+                        🏷️ Brand
+                    </button>
+                    <div class="filter-dropdown-content">
+                        <div class="filter-options">
+                            <div class="filter-option">
+                                <input type="checkbox" id="brand-apple" onchange="updateFilters('brand', 'Apple')">
+                                <label for="brand-apple">Apple</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="brand-samsung" onchange="updateFilters('brand', 'Samsung')">
+                                <label for="brand-samsung">Samsung</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="brand-sony" onchange="updateFilters('brand', 'Sony')">
+                                <label for="brand-sony">Sony</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="checkbox" id="brand-dell" onchange="updateFilters('brand', 'Dell')">
+                                <label for="brand-dell">Dell</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-dropdown">
+                    <button class="filter-btn">
+                        💰 Price
+                    </button>
+                    <div class="filter-dropdown-content">
+                        <div class="price-range">
+                            <div>Price Range</div>
+                            <div class="price-inputs">
+                                <input type="number" placeholder="Min" id="minPrice">
+                                <span>-</span>
+                                <input type="number" placeholder="Max" id="maxPrice">
+                            </div>
+                            <button class="search-btn" style="margin-top: 0.5rem; padding: 0.3rem 1rem;" onclick="applyPriceFilter()">Apply</button>
+                        </div>
+                        <div class="filter-options">
+                            <div class="filter-option">
+                                <input type="radio" name="priceRange" id="price-under100" onchange="updateFilters('price', 'Under $100')">
+                                <label for="price-under100">Under $100</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="radio" name="priceRange" id="price-100-500" onchange="updateFilters('price', '$100 - $500')">
+                                <label for="price-100-500">$100 - $500</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="radio" name="priceRange" id="price-500-1000" onchange="updateFilters('price', '$500 - $1000')">
+                                <label for="price-500-1000">$500 - $1000</label>
+                            </div>
+                            <div class="filter-option">
+                                <input type="radio" name="priceRange" id="price-over1000" onchange="updateFilters('price', 'Over $1000')">
+                                <label for="price-over1000">Over $1000</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Filters Display -->
+        <div class="active-filters" id="activeFilters">
+            <!-- Active filters will appear here -->
+        </div>
+    </section>
+
+    <!-- Home Page Content -->
+    <div id="homePage">
+        <section class="hero">
+            <h1>Welcome to TechStore</h1>
+            <p>Your one-stop shop for the latest gadgets and tech</p>
+        </section>
+
+        <section class="products">
+            <h2>Featured Products</h2>
+            <div class="products-grid" id="productsGrid">
+                <div class="product-card" data-category="Smartphones" data-brand="Apple" data-price="699">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smartphone Pro">
+                    </div>
+                    <h3>Smartphone Pro</h3>
+                    <p>Latest smartphone with advanced features</p>
+                    <div class="product-rating">
+                        ★★★★☆ <span class="rating-count">(128)</span>
+                    </div>
+                    <div class="stock-status">In Stock</div>
+                    <div class="product-price">$699</div>
+                    <button class="add-to-cart" onclick="addToCart('Smartphone Pro', 699)">Add to Cart</button>
+                    <button class="view-details" onclick="viewProductDetails('smartphone-pro.html')">View Details</button>
+                </div>
+                <div class="product-card" data-category="Laptops" data-brand="Dell" data-price="1299">
+                    <div class="product-badge">New</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Laptop Elite">
+                    </div>
+                    <h3>Laptop Elite</h3>
+                    <p>Powerful laptop for work and play</p>
+                    <div class="product-rating">
+                        ★★★★★ <span class="rating-count">(64)</span>
+                    </div>
+                    <div class="stock-status">Only 3 left</div>
+                    <div class="product-price">$1299</div>
+                    <button class="add-to-cart" onclick="addToCart('Laptop Elite', 1299)">Add to Cart</button>
+                    <button class="view-details" onclick="viewProductDetails('laptop-elite.html')">View Details</button>
+                </div>
+                <div class="product-card" data-category="Headphones" data-brand="Sony" data-price="199">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Wireless Headphones">
+                    </div>
+                    <h3>Wireless Headphones</h3>
+                    <p>Premium sound quality</p>
+                    <div class="product-rating">
+                        ★★★★☆ <span class="rating-count">(89)</span>
+                    </div>
+                    <div class="stock-status">In Stock</div>
+                    <div class="product-price">$199</div>
+                    <button class="add-to-cart" onclick="addToCart('Wireless Headphones', 199)">Add to Cart</button>
+                    <button class="view-details" onclick="viewProductDetails('wireless-headphones.html')">View Details</button>
+                </div>
+                <div class="product-card" data-category="Wearables" data-brand="Samsung" data-price="299">
+                    <div class="product-badge">Sale</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smart Watch">
+                    </div>
+                    <h3>Smart Watch</h3>
+                    <p>Track your fitness and notifications</p>
+                    <div class="product-rating">
+                        ★★★★☆ <span class="rating-count">(42)</span>
+                    </div>
+                    <div class="stock-status">In Stock</div>
+                    <div class="product-price"><span class="original-price">$349</span> $299</div>
+                    <button class="add-to-cart" onclick="addToCart('Smart Watch', 299)">Add to Cart</button>
+                    <button class="view-details" onclick="viewProductDetails('smart-watch.html')">View Details</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="recently-viewed">
+            <h2 class="section-title">Recently Viewed</h2>
+            <div class="recent-products">
+                <div class="recent-product">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Tablet">
+                    <div>Tablet Pro</div>
+                    <div>$499</div>
+                </div>
+                <div class="recent-product">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Camera">
+                    <div>Digital Camera</div>
+                    <div>$599</div>
+                </div>
+                <div class="recent-product">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Gaming Console">
+                    <div>Gaming Console</div>
+                    <div>$399</div>
+                </div>
+                <div class="recent-product">
+                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="Keyboard">
+                    <div>Mechanical Keyboard</div>
+                    <div>$129</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="cart-modal" id="cartModal">
+        <h2>Shopping Cart</h2>
+        <div id="cartItems"></div>
+        <div id="cartTotal"></div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <a href="#">All Products</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">Best Sellers</a>
+                <a href="#">Deals & Promotions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns & Refunds</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <a href="#">Our Story</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 TechStore Demo. All rights reserved. This is a demonstration site.
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/filters.js"></script>
+</body>
+</html>

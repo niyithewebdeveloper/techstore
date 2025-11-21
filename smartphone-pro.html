@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphone Pro - TechStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        🛒 DEMO STORE - No real transactions will be processed
+    </div>
+
+    <!-- Watermark -->
+    <div class="watermark">Demo by <a href="https://niyithewebdeveloper.vercel.app" target="_blank">Niyi the Web Developer</a></div>
+
+    <nav class="navbar">
+        <div class="logo">TechStore</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <span>🔍</span>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            🛒 <span class="cart-count">0</span>
+        </div>
+    </nav>
+
+    <div class="promo-banner">
+         Free Shipping on Orders Over $50 | 🔄 30-Day Return Policy
+    </div>
+
+    <!-- Product Detail Page -->
+    <div class="product-detail">
+        <div class="product-gallery">
+            <div class="thumbnail-container">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smartphone Pro Front" class="thumbnail active" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smartphone Pro Back" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smartphone Pro Side" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smartphone Pro Display" class="thumbnail" onclick="changeImage(this.src)">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smartphone Pro Camera" class="thumbnail" onclick="changeImage(this.src)">
+            </div>
+            <div class="main-image">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
+                     alt="Smartphone Pro" id="mainProductImage">
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1 class="product-title">Smartphone Pro</h1>
+            <div class="product-rating">
+                ★★★★☆ <span class="rating-count">(128 reviews)</span>
+            </div>
+            <div class="product-price">$699</div>
+            <div class="stock-status">In Stock (42 available)</div>
+            
+            <p class="product-description">
+                Experience the future with our latest Smartphone Pro. Featuring a stunning 6.7-inch OLED display, 
+                professional-grade camera system, and all-day battery life. Powered by the latest processor for 
+                seamless performance in everything from gaming to productivity.
+            </p>
+
+            <div class="variants">
+                <div class="variant-group">
+                    <div class="variant-title">Color</div>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant(this, 'color', 'Midnight Black')">Midnight Black</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'color', 'Arctic Silver')">Arctic Silver</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'color', 'Ocean Blue')">Ocean Blue</div>
+                    </div>
+                </div>
+                
+                <div class="variant-group">
+                    <div class="variant-title">Storage</div>
+                    <div class="variant-options">
+                        <div class="variant-option selected" onclick="selectVariant(this, 'storage', '128GB')">128GB</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'storage', '256GB')">256GB</div>
+                        <div class="variant-option" onclick="selectVariant(this, 'storage', '512GB')">512GB</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quantity-selector">
+                <div class="variant-title">Quantity</div>
+                <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                <div class="quantity-display" id="quantity">1</div>
+                <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+            </div>
+
+            <button class="add-to-cart" onclick="addToCart('Smartphone Pro', 699)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div class="product-reviews">
+        <h2 class="reviews-title">Customer Reviews</h2>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">Alex Johnson</div>
+                <div class="review-date">March 15, 2023</div>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <div class="review-text">
+                This phone exceeded my expectations! The camera quality is amazing, especially in low light. 
+                Battery life easily gets me through a full day of heavy use.
+            </div>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">Sarah Miller</div>
+                <div class="review-date">February 28, 2023</div>
+            </div>
+            <div class="review-rating">★★★★☆</div>
+            <div class="review-text">
+                Great phone overall. The display is stunning and performance is smooth. My only complaint is that 
+                it's a bit slippery without a case. Would still recommend!
+            </div>
+        </div>
+        
+        <div class="review">
+            <div class="review-header">
+                <div class="reviewer-name">Michael Chen</div>
+                <div class="review-date">February 10, 2023</div>
+            </div>
+            <div class="review-rating">★★★★★</div>
+            <div class="review-text">
+                Upgraded from my 2-year-old phone and the difference is night and day. Everything is faster, 
+                the screen is incredible, and the camera takes professional-looking photos.
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-modal" id="cartModal">
+        <h2>Shopping Cart</h2>
+        <div id="cartItems"></div>
+        <div id="cartTotal"></div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <a href="#">All Products</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">Best Sellers</a>
+                <a href="#">Deals & Promotions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns & Refunds</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <a href="#">Our Story</a>
+                <a href="#">Careers</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 TechStore Demo. All rights reserved. This is a demonstration site.
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script>
+        // Product-specific variables
+        let selectedVariants = {
+            color: 'Midnight Black',
+            storage: '128GB'
+        };
+    </script>
+</body>
+</html>
